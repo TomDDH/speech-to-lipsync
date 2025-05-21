@@ -26,9 +26,9 @@ var SpeechToLipsync = class {
     });
   }
   callback(features) {
-    const jaw = features[1] * 0.01 * this.amount;
-    const oo = Math.pow(2, features[4] * features[7] / 10) * 0.1 * this.amount;
-    const ee = Math.max(features[4], 0, 1) * 0.2 * this.amount;
+    const jaw = features[1] * 0.01 * this.intensity;
+    const oo = Math.pow(2, features[4] * features[7] / 10) * 0.1 * this.intensity;
+    const ee = Math.max(features[4], 0, 1) * 0.2 * this.intensity;
     if (this.onUpdate) {
       this.onUpdate({ jaw, oo, ee });
     }

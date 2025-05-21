@@ -37,14 +37,14 @@ module.exports = __toCommonJS(index_exports);
 // src/SpeechToLipsync.ts
 var import_meyda = __toESM(require("meyda"));
 var SpeechToLipsync = class {
-  amount;
+  intensity;
   speech;
   onUpdate;
   audioContext;
   analyzer;
   buffer;
-  constructor({ amount = 1 }) {
-    this.amount = amount;
+  constructor({ intensity = 1 }) {
+    this.intensity = intensity;
     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     this.buffer = this.audioContext.createBuffer(1, this.audioContext.sampleRate, this.audioContext.sampleRate);
     this.speech = this.audioContext.createBufferSource();
@@ -62,9 +62,9 @@ var SpeechToLipsync = class {
     });
   }
   callback(features) {
-    const jaw = features[1] * 0.01 * this.amount;
-    const oo = Math.pow(2, features[4] * features[7] / 10) * 0.1 * this.amount;
-    const ee = Math.max(features[4], 0, 1) * 0.2 * this.amount;
+    const jaw = features[1] * 0.01 * this.intensity;
+    const oo = Math.pow(2, features[4] * features[7] / 10) * 0.1 * this.intensity;
+    const ee = Math.max(features[4], 0, 1) * 0.2 * this.intensity;
     if (this.onUpdate) {
       this.onUpdate({ jaw, oo, ee });
     }

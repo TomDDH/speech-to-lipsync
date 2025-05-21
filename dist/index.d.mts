@@ -2,7 +2,7 @@ import { MeydaAnalyzer } from 'meyda/dist/esm/meyda-wa';
 import { MeydaFeaturesObject } from 'meyda';
 
 type SpeechToLipsyncProps = {
-    amount?: number;
+    intensity?: number;
 };
 
 declare global {
@@ -11,7 +11,7 @@ declare global {
     }
 }
 declare class SpeechToLipsync {
-    private amount;
+    private intensity;
     private speech;
     onUpdate?: (data: {
         jaw: number;
@@ -21,7 +21,7 @@ declare class SpeechToLipsync {
     audioContext: AudioContext;
     analyzer: MeydaAnalyzer;
     private buffer;
-    constructor({ amount }: SpeechToLipsyncProps);
+    constructor({ intensity }: SpeechToLipsyncProps);
     callback(features: MeydaFeaturesObject['mfcc']): void;
     setSource(buffer: AudioBuffer): void;
     play(): void;
