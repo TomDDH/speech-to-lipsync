@@ -1,0 +1,27 @@
+{
+  "name": "speech-to-lipsync",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/TomDDH",
+  "repository": {
+    "url": "https://github.com/TomDDH"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "lipsync"
+  ],
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "meyda": "^5.6.3"
+  }
+}
