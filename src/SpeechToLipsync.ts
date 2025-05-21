@@ -12,14 +12,14 @@ declare global {
 }
 
 class SpeechToLipsync {
-    private amount: number;
+    private intensity: number;
     private speech: AudioBufferSourceNode
     public onUpdate?: (data: { jaw: number, oo: number, ee: number }) => void
     public audioContext: AudioContext
     public analyzer: MeydaAnalyzer
     private buffer: AudioBuffer
-    constructor({ amount = 1 }: SpeechToLipsyncProps) {
-        this.amount = amount
+    constructor({ intensity = 1 }: SpeechToLipsyncProps) {
+        this.intensity = intensity
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
         this.buffer = this.audioContext.createBuffer(1, this.audioContext.sampleRate, this.audioContext.sampleRate);
         this.speech = this.audioContext.createBufferSource();
@@ -38,9 +38,9 @@ class SpeechToLipsync {
     }
 
     callback(features: MeydaFeaturesObject['mfcc']) {
-        const jaw = features[1] * 0.01 * this.amount
-        const oo = Math.pow(2, (features[4] * features[7]) / 10) * 0.1 * this.amount
-        const ee = Math.max(features[4], 0, 1) * 0.2 * this.amount
+        const jaw = features[1] * 0.01 * this.intensity
+        const oo = Math.pow(2, (features[4] * features[7]) / 10) * 0.1 * this.intensity
+        const ee = Math.max(features[4], 0, 1) * 0.2 * this.intensity
         if (this.onUpdate) {
             this.onUpdate({ jaw, oo, ee })
         }

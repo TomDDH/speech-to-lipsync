@@ -20,7 +20,7 @@ npm install speech-to-lipsync
 ```javascript
 import { SpeechToLipsync } from 'speech-to-lipsync';
 
-const speechPlayer = new SpeechToLipsync({ amount: 0.8 });
+const speechPlayer = new SpeechToLipsync({ intensity: 0.8 });
 
 speechPlayer.onUpdate = (features) => {
                 this.head.morphTargetInfluences[34] = THREE.MathUtils.lerp(this.head.morphTargetInfluences[34], threshold(features.jaw, 0.01, 1), 0.15)

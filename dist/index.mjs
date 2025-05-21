@@ -1,14 +1,14 @@
 // src/SpeechToLipsync.ts
 import Meyda from "meyda";
 var SpeechToLipsync = class {
-  amount;
+  intensity;
   speech;
   onUpdate;
   audioContext;
   analyzer;
   buffer;
-  constructor({ amount = 1 }) {
-    this.amount = amount;
+  constructor({ intensity = 1 }) {
+    this.intensity = intensity;
     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
     this.buffer = this.audioContext.createBuffer(1, this.audioContext.sampleRate, this.audioContext.sampleRate);
     this.speech = this.audioContext.createBufferSource();
